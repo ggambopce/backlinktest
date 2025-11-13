@@ -24,11 +24,10 @@ class MemoryStore:
         self.devices: Dict[str, dict] = {}      # deviceId -> {state, last_seen, running_job}
 
     # 새로운 작업을 큐에 등록하는 함수
-    async def enqueue_job(self, device_id: str, keyword: str, backlink_url: str, number: int) -> str:
+    async def enqueue_job(self, keyword: str, backlink_url: str, number: int) -> str:
         async with self._lock:
             job_id = uuid.uuid4().hex
             job = Job(job_id, keyword, backlink_url, number)
-            job.assigned_device = device_id
             self.jobs[job_id] = job
             self.job_queue.append(job_id)
             return job_id

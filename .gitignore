@@ -1,0 +1,62 @@
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.so
+
+# 가상환경
+.venv/
+venv/
+env/
+ENV/
+
+# 패키지 배포 파일
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# 로그
+*.log
+
+# 데이터베이스 파일 (sqlite 등)
+*.db
+*.sqlite3
+
+# 환경변수 파일(중요)
+.env
+.env.*
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# mypy / typing
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ========================
+# FastAPI / Uvicorn
+# ========================
+# uvicorn reload cache
+*.reload
+
+# pip wheel local cache
+pip-wheel-metadata/
+
+# ========================
+# OS
+# ========================
+# macOS
+.DS_Store
+*.DS_Store
+
+# Windows
+Thumbs.d

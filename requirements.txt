@@ -5,3 +5,6 @@ pydantic-settings
 python-dotenv
 paramiko
 redis
+pydantic
+python-dotenv
+SQLAlchemy

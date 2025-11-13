@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from app.routers import machine
-from app.routers import userJob
+from .routers import machine
+from .routers import userJob
 
 app = FastAPI(title="Backlink Heartbeat API", version="0.1.0")
 app.include_router(machine.router)

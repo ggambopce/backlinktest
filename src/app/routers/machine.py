@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from app.schemas import (
+from ..schemas import (
     HeartbeatRequest, HeartbeatResponseNone, HeartbeatResponseRun,
     JobEnqueueRequest, JobResultReport, JobPayload
 )
-from app.stores.storage import store
+from ..stores.storage import store
 
 router = APIRouter(prefix="/api/backlink/machine", tags=["Backlink-Machine"])
 
