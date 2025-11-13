@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 from ..stores.storage import store
-from ..schemas import JobRequest
+from ..heartbeat import JobRequest
 
 router = APIRouter(prefix="/api/backlink", tags=["Backlink"])
 

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from ..schemas import (
+from ..heartbeat import (
     HeartbeatRequest, HeartbeatResponseNone, HeartbeatResponseRun,
     JobEnqueueRequest, JobResultReport, JobPayload
 )

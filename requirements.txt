@@ -1,10 +1,11 @@
 fastapi
 uvicorn[standard]
 httpx
+psycopg[binary]
+SQLAlchemy
+alembic
+pydantic
 pydantic-settings
 python-dotenv
 paramiko
-redis
-pydantic
-python-dotenv
-SQLAlchemy
+psycopg2-binary
