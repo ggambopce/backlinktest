@@ -3,7 +3,7 @@ from app.schemas import (
     HeartbeatRequest, HeartbeatResponseNone, HeartbeatResponseRun,
     JobEnqueueRequest, JobResultReport, JobPayload
 )
-from app.storage import store
+from app.stores.storage import store
 
 router = APIRouter(prefix="/api/backlink/machine", tags=["Backlink-Machine"])
 
@@ -12,7 +12,7 @@ router = APIRouter(prefix="/api/backlink/machine", tags=["Backlink-Machine"])
 })
 async def heartbeat(hb: HeartbeatRequest):
     # 디바이스 상태 갱신
-    await store.update_device(hb.deviceId, hb.state, hb.lastJobId)
+    await store.update_device(hb.deviceId, hb.state)
 
     # IDLE이면 작업 할당 시도
     if hb.state == "IDLE":

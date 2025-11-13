@@ -35,3 +35,8 @@ class JobResultReport(BaseModel):
     status: Literal["SUCCESS", "FAILED"]
     results: List[JobResultItem] = []
     error: Optional[str] = None
+
+class JobRequest(BaseModel):
+    keyword: str
+    backlinkUrl: str
+    number: int
