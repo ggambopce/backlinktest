@@ -1,8 +1,9 @@
 # src/app/models/profile.py
 from datetime import datetime, date
 from sqlalchemy import (
-    Column, Integer, String, Date, Text, DateTime
+    Column, Integer, String, Date, Text, DateTime, ForeignKey
 )
+from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
 from ..core.database import Base
 
@@ -11,6 +12,10 @@ class Profile(Base):
 
     id = Column(Integer, primary_key=True, index=True)
 
+    # FK (User 1:1)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True)
+
+    # 프로필 필드들
     profile_image_url = Column(String(255), nullable=False)  # 프로필 이미지
     temperament = Column(String(50), nullable=True)          # 4기질
     enneagram = Column(String(20), nullable=True)            # 에니어그램 9가지 유형
@@ -34,3 +39,7 @@ class Profile(Base):
         onupdate=datetime.now,
         nullable=False,
     )
+
+    # 관계
+    user = relationship("User", back_populates="profile")
+
