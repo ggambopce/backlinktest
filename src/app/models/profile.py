@@ -25,7 +25,7 @@ class Profile(Base):
     birth_date = Column(Date, nullable=True)                 # 생년월일(직접작성)
     gender = Column(String(10), nullable=True)               # 성별(직접작성)
     location = Column(String(100), nullable=True)            # 활동지역(직접작성)
-    temperament_report = Column(Text, nullable=True)         # 4기질 보고서
+    personal_report = Column(Text, nullable=True)            # 개인 성향 보고서
     sns_url = Column(String(255), nullable=True)             # SNS 주소(직접작성)
     phone_number = Column(String(20), nullable=True)         # 전화번호(직접작성)
     # 설문 코드값들
