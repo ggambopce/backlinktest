@@ -17,10 +17,10 @@ class HelenFisherType(IntEnum):
 
 
 HELEN_LABEL_KO = {
-    HelenFisherType.EXPLORER: "Explorer (탐험가)",
-    HelenFisherType.BUILDER: "Builder (건축가)",
-    HelenFisherType.NEGOTIATOR: "Negotiator (협상가)",
-    HelenFisherType.DIRECTOR: "Director (감독자)",
+    HelenFisherType.EXPLORER: "Explorer 탐험가",
+    HelenFisherType.BUILDER: "Builder 건축가",
+    HelenFisherType.NEGOTIATOR: "Negotiator 협상가",
+    HelenFisherType.DIRECTOR: "Director 감독자",
 }
 
 
@@ -41,13 +41,13 @@ class EnneagramCoreType(IntEnum):
 
 
 ENNEAGRAM_LABEL_KO = {
-    EnneagramCoreType.ONE:   "1번 (완벽주의자)",
-    EnneagramCoreType.TWO:   "2번 (조력가)",
-    EnneagramCoreType.THREE: "3번 (성취자)",
-    EnneagramCoreType.FOUR:  "4번 (낭만가)",
-    EnneagramCoreType.FIVE:  "5번 (탐구자)",
-    EnneagramCoreType.SIX:   "6번 (충성가)",
-    EnneagramCoreType.SEVEN: "7번 (낙천가)",
-    EnneagramCoreType.EIGHT: "8번 (보호자)",
-    EnneagramCoreType.NINE:  "9번 (중재자)",
+    EnneagramCoreType.ONE:   "1번 완벽주의자",
+    EnneagramCoreType.TWO:   "2번 조력가",
+    EnneagramCoreType.THREE: "3번 성취자",
+    EnneagramCoreType.FOUR:  "4번 낭만가",
+    EnneagramCoreType.FIVE:  "5번 탐구자",
+    EnneagramCoreType.SIX:   "6번 충성가",
+    EnneagramCoreType.SEVEN: "7번 낙천가",
+    EnneagramCoreType.EIGHT: "8번 보호자",
+    EnneagramCoreType.NINE:  "9번 중재자",
 }
