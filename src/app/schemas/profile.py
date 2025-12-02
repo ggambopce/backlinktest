@@ -3,23 +3,7 @@ from typing import Optional, Any
 from datetime import date, datetime
 
 
-
-class ProfileBase(BaseModel):
-    profile_image_url: Optional[str] = None
-    temperament: Optional[str] = None
-    enneagram: Optional[str] = None
-    introduction: Optional[str] = None
-    job: Optional[str] = None
-    birth_date: Optional[date] = None
-    gender: Optional[str] = None
-    location: Optional[str] = None
-    temperament_report: Optional[str] = None
-    sns_url: Optional[str] = None
-    phone_number: Optional[str] = None
-
-
-class ProfileCreate(ProfileBase):
-    user_id: int
+class ProfileCreate(BaseModel):
 
     profile_image_url: str
     introduction: Optional[str] = None
@@ -51,7 +35,7 @@ class ProfileResponse(BaseModel):
 
     temperament: Optional[str] = None
     enneagram: Optional[str] = None
-    temperament_report: Optional[str] = None
+    personal_report: Optional[str] = None
 
     helen_code: Optional[int] = None
     enneagram_maturity: Optional[int] = None

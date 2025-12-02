@@ -13,7 +13,7 @@ from app.services.report_service import (
     build_personal_report,
 )
 
-def create_profile_with_survey(db: Session, payload: ProfileCreate) -> Profile:
+def create_profile_with_survey(db: Session, payload: ProfileCreate, user_id: int) -> Profile:
     # 설문 값 추출
     q1 = payload.q1  # 헬렌 코드 (1~4)
     q2 = payload.q2  # 성숙도 (1~3)
@@ -34,7 +34,7 @@ def create_profile_with_survey(db: Session, payload: ProfileCreate) -> Profile:
 
     # 3) Profile 엔티티 생성
     profile = Profile(
-        user_id=payload.user_id,
+        user_id=user_id,
         profile_image_url=payload.profile_image_url,
         introduction=payload.introduction,
         job=payload.job,
