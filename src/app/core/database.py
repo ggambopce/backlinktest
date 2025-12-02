@@ -5,7 +5,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 
-
 load_dotenv()   # .env 파일 읽기
 
 DB_HOST = os.getenv("DB_HOST", "localhost")

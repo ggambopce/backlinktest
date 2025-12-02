@@ -6,7 +6,6 @@ from typing import Optional, Literal
 class SocialLoginRequest(BaseModel):
     provider: Literal["google", "apple"]
     idToken: Optional[str] = Field(None, description="Google/Apple ID Token")
-    authorizationCode: Optional[str] = Field(None, description="Apple등 코드 기반 플로우용")
     deviceId: Optional[str] = None
 
 

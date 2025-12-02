@@ -3,14 +3,14 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.schemas.common import ApiResponse
 from app.schemas.auth import SocialLoginRequest, CurrentUser
-from app.db import get_session
+from app.core.database import get_db
 from app.services.auth_service import AuthService
 from app.core.security import get_current_user
 
 router = APIRouter()
 
 
-def get_auth_service(db: Session = Depends(get_session)) -> AuthService:
+def get_auth_service(db: Session = Depends(get_db)) -> AuthService:
     return AuthService(db)
 
 

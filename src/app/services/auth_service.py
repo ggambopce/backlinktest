@@ -4,9 +4,8 @@ from fastapi import HTTPException
 
 from app.schemas.auth import SocialLoginRequest, AuthResult, UserInfo
 from app.services.google_auth import verify_google_id_token
-from app.services.apple_auth import verify_apple_id_token
 from app.services.jwt_service import create_access_token, create_refresh_token
-from app.models import User
+from app.models.user import User
 
 
 class AuthService:
@@ -20,13 +19,6 @@ class AuthService:
             social_id = payload["sub"]
             email = payload.get("email")
             login_type = "google"
-
-        elif body.provider == "apple":
-            payload = await verify_apple_id_token(body.idToken)
-            social_id = payload["sub"]
-            email = payload.get("email")
-            login_type = "apple"
-
         else:
             raise HTTPException(status_code=400, detail="지원하지 않는 provider")
 
