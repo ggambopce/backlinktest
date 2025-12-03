@@ -17,6 +17,9 @@ class User(Base):
     social_id = Column(String(255), nullable=True)        # provider가 주는 sub 값
     login_type = Column(String(50), default="normal")     # normal / google / apple
 
+    # 채팅 상태
+    is_in_chat = Column(Boolean, default=False)           # 현재 채팅 중 여부
+
     # 토큰
     refresh_token = Column(String(500), nullable=True)
 

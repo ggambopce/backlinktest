@@ -5,6 +5,7 @@ from .routers import profile
 from .core.database import Base, engine
 from .routers import chat_websocket
 from .routers import auth
+from .routers import match
 from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(title="Backlink Heartbeat API", version="0.1.0")
@@ -13,6 +14,7 @@ app.include_router(userJob.router)
 app.include_router(profile.router)
 app.include_router(chat_websocket.router)
 app.include_router(auth.router)
+app.include_router(match.router)
 
 # 개발 단계에서는 자동 테이블 생성
 Base.metadata.create_all(bind=engine)

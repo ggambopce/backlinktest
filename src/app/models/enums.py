@@ -51,3 +51,11 @@ ENNEAGRAM_LABEL_KO = {
     EnneagramCoreType.EIGHT: "8번 보호자",
     EnneagramCoreType.NINE:  "9번 중재자",
 }
+
+class MatchStatus(str, Enum):
+    MATCHED = "MATCHED"           # 매칭만 된 상태, 오퍼/채팅 수락 전 상태 (디폴트)
+    CHAT_PENDING = "CHAT_PENDING" # 한쪽은 채팅 수락, 다른 쪽은 대기
+    CHAT_ACTIVE = "CHAT_ACTIVE"   # 양쪽 다 채팅 수락 → 실제 채팅 진행 중
+    CHAT_ENDED = "CHAT_ENDED"     # 채팅 12시간 만료 or 시스템 종료
+    CANCELED = "CANCELED"         # 한쪽이 채팅 거절하거나, 만료로 무효 처리
+
