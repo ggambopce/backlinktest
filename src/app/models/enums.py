@@ -1,5 +1,6 @@
 # src/app/models/enums.py
 from enum import IntEnum
+from enum import Enum
 
 
 class HelenFisherType(IntEnum):

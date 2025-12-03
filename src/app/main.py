@@ -3,11 +3,15 @@ from .routers import machine
 from .routers import userJob
 from .routers import profile
 from .core.database import Base, engine
+from .core.scheduler import start_scheduler, shutdown_scheduler
 from .routers import chat_websocket
 from .routers import auth
 from .routers import match
 from .routers import chat
 from fastapi.staticfiles import StaticFiles
+
+from .routers import dev_auth
+
 
 app = FastAPI(title="Backlink Heartbeat API", version="0.1.0")
 app.include_router(machine.router)
@@ -17,6 +21,7 @@ app.include_router(chat_websocket.router)
 app.include_router(auth.router)
 app.include_router(match.router)
 app.include_router(chat.router)
+app.include_router(dev_auth.router)
 
 # 개발 단계에서는 자동 테이블 생성
 Base.metadata.create_all(bind=engine)
@@ -27,3 +32,13 @@ app.mount(
     StaticFiles(directory="app"),  # 실제 파일 위치 (프로젝트 루트 기준)
     name="static",
 )
+
+@app.on_event("startup")
+def on_startup():
+    # 기타 초기화 로직들 있다면 여기서 같이 실행
+    start_scheduler()
+
+
+@app.on_event("shutdown")
+def on_shutdown():
+    shutdown_scheduler()

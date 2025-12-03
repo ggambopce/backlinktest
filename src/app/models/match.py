@@ -1,12 +1,12 @@
 # app/models/match.py
-from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, Boolean
+from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, Text, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy import Enum as SAEnum
 from app.models.enums import MatchStatus
 
 from datetime import datetime
 
-from app.db import Base
+from app.core.database import Base
 
 
 class MatchResult(Base):

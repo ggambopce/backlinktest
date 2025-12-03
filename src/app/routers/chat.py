@@ -16,6 +16,7 @@ from app.core.database import get_db
 from app.core.security import get_current_user  # HTTP용 인증
 from app.schemas.auth import CurrentUser
 from app.schemas.profile import ApiResponse
+from app.schemas.chat import ChatRoomResponse, ChatAcceptRequest
 
 from app.models.match import MatchResult
 from app.models.user import User
