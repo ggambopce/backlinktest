@@ -224,11 +224,14 @@ def create_daily_match_results_by_best_score(db: Session) -> list[MatchResult]:
         if p_a.user_id in matched_user_ids or p_b.user_id in matched_user_ids:
             continue
 
+        # 궁합 리포트 생성    
+        report = build_compatibility_report_from_profiles(p_a, p_b)
         # 아직 매칭 안 된 두 명이면 MatchResult 생성
         match = MatchResult(
             user_a_id=p_a.user_id,
             user_b_id=p_b.user_id,
             compatibility_score=total_score,
+            compatibility_report=report,
             status=MatchStatus.MATCHED,
             created_at=now,
             # 채팅/공개 관련 필드는 아직 False/None

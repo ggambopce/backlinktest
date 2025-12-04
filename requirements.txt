@@ -9,3 +9,7 @@ pydantic-settings
 python-dotenv
 paramiko
 psycopg2-binary
+
+python-jose[cryptography]   # JWT 디코딩 (WS)
+apscheduler                 # 매칭 스케줄러
+redis                       # 채팅 메시지 저장(12시간 TTL)
