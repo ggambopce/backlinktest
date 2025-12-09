@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ConfigDict
-from typing import Optional, Any
+from typing import Optional, Any, Generic, TypeVar
 from datetime import date, datetime
 
 
@@ -48,8 +48,21 @@ class ProfileResponse(BaseModel):
     class Config:
         from_attributes = True
 
+class MatchOfferProfileResponse(BaseModel):
+    profile_image_url: str | None = None
+    introduction: str | None = None
+    job: str | None = None
+    birth_date: date | None = None
+    gender: str | None = None
+    location: str | None = None
+    temperament: str | None = None
+    enneagram: str | None = None
+    personal_report: str | None = None
 
-class ApiResponse(BaseModel):
+
+T = TypeVar("T")
+
+class ApiResponse(BaseModel, Generic[T]):
     code: int
     message: str
-    result: ProfileResponse | None = None
+    result: T | None = None
