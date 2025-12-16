@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from ..heartbeat import (
+from ..schemas.heartbeat import (
     HeartbeatRequest, HeartbeatResponseNone, HeartbeatResponseRun,
     JobEnqueueRequest, JobResultReport, JobPayload
 )
@@ -21,10 +21,9 @@ async def heartbeat(hb: HeartbeatRequest):
             return HeartbeatResponseRun(
                 action="RUN",
                 job=JobPayload(
-                    jobId=job.job_id,
-                    keyword=job.keyword,
-                    backlinkUrl=job.backlink_url,
-                    number=job.number
+                    jobId=job.jobId,
+                    jobType=job.jobType,
+                    payload=job.payload
                 )
             )
     # 작업 없음
@@ -36,3 +35,4 @@ async def report_result(report: JobResultReport):
     if not ok:
         raise HTTPException(status_code=404, detail="job not found")
     return {"ok": True}
+
