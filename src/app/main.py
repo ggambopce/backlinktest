@@ -29,7 +29,7 @@ Base.metadata.create_all(bind=engine)
 # 정적 파일 제공: /static/test_chat.html 로 접근 가능
 app.mount(
     "/static",  # URL prefix
-    StaticFiles(directory="app"),  # 실제 파일 위치 (프로젝트 루트 기준)
+    StaticFiles(directory="src/app"),  # 실제 파일 위치 (프로젝트 루트 기준)
     name="static",
 )
 

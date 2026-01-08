@@ -32,13 +32,13 @@ class OptionsModel(BaseModel): # 실패,캡차,재시도 옵션
 class BoardWriteJobRequest(BaseModel):
     jobType: Literal["BOARD_WRITE"] = "BOARD_WRITE"
 
-    # ✅ 최소 입력도 받기 위한 필드 추가
+    # 최소 입력도 받기 위한 필드 추가
     keyword: Optional[str] = None
     backlinkUrl: Optional[AnyHttpUrl] = None
     targetBoardUrl: Optional[AnyHttpUrl] = None
     siteType: Optional[Literal["GnuBoard", "XE", "Imweb", "Cafe24", "Unknown"]] = None  # 선택
 
-    # ✅ 기존 구조도 그대로 받기
+    # 기존 구조도 그대로 받기
     board: Optional[BoardModel] = None
     account: Optional[AccountModel] = None
     post: Optional[PostModel] = None
