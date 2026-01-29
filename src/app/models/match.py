@@ -2,11 +2,11 @@
 from sqlalchemy import Column, Integer, ForeignKey, String, DateTime, Text, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy import Enum as SAEnum
-from app.models.enums import MatchStatus
+from .enums import MatchStatus
 
 from datetime import datetime
 
-from app.core.database import Base
+from ..core.database import Base
 
 
 class MatchResult(Base):

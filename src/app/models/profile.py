@@ -5,8 +5,8 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
-from app.core.database import Base
-from app.models.enums import HelenFisherType, EnneagramCoreType
+from ..core.database import Base
+from .enums import HelenFisherType, EnneagramCoreType
 
 class Profile(Base):
     __tablename__ = "profiles"

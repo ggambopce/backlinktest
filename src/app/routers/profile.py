@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, status, HTTPException
 from ..schemas.profile import ApiResponse, ProfileCreate, ProfileResponse, MatchOfferProfileResponse
 from ..models.profile import Profile
 from ..core.database import get_db
@@ -11,7 +11,7 @@ from app.schemas.auth import CurrentUser
 router = APIRouter(prefix="/api/profile")
 
 @router.post(
-    "/create",
+    "/me/register",
     response_model=ApiResponse,
     status_code=status.HTTP_200_OK,
 )
@@ -32,19 +32,23 @@ def create_profile(
 
 
 @router.get(
-    "/{profile_id}",
+    "/me",
     response_model=ApiResponse,
     status_code=status.HTTP_200_OK,
 )
 def get_profile(
-    profile_id: int,
     db: Session = Depends(get_db),
     current_user: CurrentUser = Depends(get_current_user),
 ):
-    profile = db.get(Profile, profile_id)
+    profile = (
+        db.query(Profile)
+        .filter(Profile.user_id == current_user.user_id)
+        .first()
+    )
 
     if not profile:
-        raise Exception("프로필을 찾을 수 없음")
+        raise HTTPException(status_code=404, detail="프로필이 없습니다.")
+
 
     if profile.user_id != current_user.user_id:
         raise Exception("본인 프로필만 조회할 수 있음")

@@ -10,6 +10,10 @@ from .routers import match
 from .routers import chat
 from fastapi.staticfiles import StaticFiles
 
+from fastapi import Request
+from fastapi.responses import JSONResponse
+from fastapi.exceptions import HTTPException as StarletteHTTPException
+
 from .routers import dev_auth
 
 
@@ -42,3 +46,10 @@ def on_startup():
 @app.on_event("shutdown")
 def on_shutdown():
     shutdown_scheduler()
+
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"code": exc.status_code, "message": str(exc.detail), "result": None},
+    )
