@@ -1,11 +1,11 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional, Any, Generic, TypeVar
 from datetime import date, datetime
 
 
 class ProfileCreate(BaseModel):
 
-    profile_image_url: str
+    profile_image_url: Optional[str] = None
     introduction: Optional[str] = None
     job: Optional[str] = None
     birth_date: Optional[date] = None
@@ -24,7 +24,7 @@ class ProfileResponse(BaseModel):
     id: int
     user_id: int
 
-    profile_image_url: str
+    profile_image_url: Optional[str] = None
     introduction: Optional[str] = None
     job: Optional[str] = None
     birth_date: Optional[date] = None

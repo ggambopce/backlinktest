@@ -17,7 +17,7 @@ class Profile(Base):
     user_id = Column(Integer, ForeignKey("users.id"), unique=True)
 
     # 프로필 필드들
-    profile_image_url = Column(String(255), nullable=False)  # 프로필 이미지(직접작성)
+    profile_image_url = Column(String(255), nullable=True)  # 프로필 이미지(직접작성)
     temperament = Column(String(50), nullable=True)          # 4기질(질문지 1번)
     enneagram = Column(String(20), nullable=True)            # 에니어그램 9가지 유형(질문지 4번)
     introduction = Column(Text, nullable=True)               # 자기소개(직접작성)
