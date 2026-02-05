@@ -1,13 +1,26 @@
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-from datetime import datetime
+from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+from apscheduler.triggers.date import DateTrigger
 
 from app.core.database import SessionLocal
 from app.services.match_service import create_daily_match_results_by_best_score
 
 # 한국 시간 기준으로 돌리고 싶으면 timezone 설정
 scheduler = AsyncIOScheduler(timezone=ZoneInfo("Asia/Seoul"))
+
+def run_match_after_5_seconds():
+    run_at = datetime.now(tz=ZoneInfo("Asia/Seoul")) + timedelta(seconds=5)
+
+    scheduler.add_job(
+        run_daily_match_job,
+        trigger=DateTrigger(run_date=run_at),
+        id="test_match_after_5_seconds",
+        replace_existing=True,
+    )
+
+    print(f"[scheduler] 5초 뒤 매칭 실행 예약됨: {run_at}")
 
 
 def run_daily_match_job():

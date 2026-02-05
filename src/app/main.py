@@ -3,7 +3,7 @@ from .routers import machine
 from .routers import userJob
 from .routers import profile
 from .core.database import Base, engine
-from .core.scheduler import start_scheduler, shutdown_scheduler
+from .core.scheduler import start_scheduler, shutdown_scheduler, run_match_after_5_seconds
 from .routers import chat_websocket
 from .routers import auth
 from .routers import match
@@ -41,6 +41,7 @@ app.mount(
 def on_startup():
     # 기타 초기화 로직들 있다면 여기서 같이 실행
     start_scheduler()
+    run_match_after_5_seconds()
 
 
 @app.on_event("shutdown")
